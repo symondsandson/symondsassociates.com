@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Symonds Associates, LLC <%= @title ? " :: #{@title} " : '' %></title>
+<%= stylesheet_link_tag 'reset', 'default' %>
+</head>
+
+<body>
+<div id="container">
+  <div id="topPan">
+    <% link_to '/', :id => 'logo' do %>
+      <%= image_tag 'logo.png', :size => '583x41', :id => 'logo' %>
+    <% end %>
+  </div>
+
+  <div id="btrightPan">
+    <% %w(clients services about contact).each do |page| %>
+      <div class='nav-link' id='<%= page.downcase %><%= @selected == page.downcase ? '-selected' : '' %>'><%= link_to page.capitalize, "/#{page}.html" %></div>
+    <% end %>
+  <div style="display: none;">
+    <%= image_tag "news-selected.png" %>
+    <%= image_tag "clients-selected.png" %>
+    <%= image_tag "services-selected.png" %>
+    <%= image_tag "about-selected.png" %>
+    <%= image_tag "contact-selected.png" %>
+  </div>
+  </div>
+
+  <%= yield %>
+
+  <div id="footermainPan">
+    <div id="footerPan">
+      <ul>
+      <li><%= link_to "Home", '/index.html' %>| </li>
+      <li><%= link_to "Clients", '/clients.html' %>| </li>
+      <li><%= link_to "Services", '/services.html' %>| </li>
+      <li><%= link_to "About", '/about.html' %>| </li>
+      <li><%= link_to "Contact", '/contact.html' %></li>
+
+      </ul>
+      <p class="copyright">&copy; 2013 Symonds Associates LLC.</p>
+    </div>
+  </div>
+</body>
+</html>
